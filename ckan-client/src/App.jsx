@@ -1,16 +1,17 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Datasets from '@/pages/Datasets'
-import Home from '@/pages/Home'
+import Footer from '@/components/layout/Footer'
+import Navbar from '@/components/layout/Navbar'
+import { Outlet } from 'react-router-dom'
 
-function AppRouter() {
+function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/datasets" element={<Datasets />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
+      <Navbar />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   )
 }
 
-export default AppRouter
+export default App
