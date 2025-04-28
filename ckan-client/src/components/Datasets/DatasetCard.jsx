@@ -1,0 +1,43 @@
+import { Badge } from '@/components/ui/badge'
+import { Button } from '../ui/button'
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '../ui/card'
+
+const DatasetCard = ({ group }) => {
+  return (
+    <Card className="py-2 px-2 rounded-md shadow-[0_20px_80px_rgba(74,58,255,0.08)] bg-white">
+      <CardHeader>
+        <CardTitle className="text-lg font-semibold">
+          {group.title} {/* Displaying the name of the dataset */}
+        </CardTitle>
+        <CardDescription className="text-sm text-gray-500">
+          {group.descripcion} {/* Displaying the description of the dataset */}
+        </CardDescription>
+      </CardHeader>
+      <CardFooter className="flex justify-around">
+        <div className="flex">
+          {group.formatos.map((formato) => (
+            <Badge
+              key={formato}
+              className={`${formato === 'CSV' ? 'bg-primary' : formato === 'PDF' ? 'bg-red-600' : formato === 'XML' ? 'bg-green-600' : 'bg-gray-200'} text-white text-xs rounded-md px-2 py-1 mr-2`}
+            >
+              {formato}
+            </Badge>
+          ))}
+        </div>
+        <div className="flex ms-auto">
+          <Button className="bg-primary text-white text-xs rounded-2xl w-12 h-6 hover:cursor-pointer hover:bg-primary-hover">
+            Ver
+          </Button>
+        </div>
+      </CardFooter>
+    </Card>
+  )
+}
+
+export default DatasetCard

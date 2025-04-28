@@ -1,34 +1,75 @@
-import { useCkanSearch } from "@/hooks/useCkanSearch";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
-
+import DatasetList from '@/components/Datasets/DatasetList'
+import FiltersSidebar from '@/components/Datasets/FiltersSidebar'
+import SearchBox from '@/components/ui/searchbox'
+import { mockGroups } from '@/data/mockGroups'
+import { FilterIcon } from 'lucide-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 function Datasets() {
-  const [query, setQuery] = useState("agua"); // valor inicial
-  const { data: datasets, loading, error } = useCkanSearch(query);
+  const [selectedFormats, setSelectedFormats] = useState([])
+  const [selectedOrganizations, setSelectedOrganizations] = useState([])
+  const [selectedCategories, setSelectedCategories] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const filteredGroups = mockGroups.filter((group) => {
+    const matchesFormat =
+      selectedFormats.length === 0 ||
+      group.formatos.some((formato) => selectedFormats.includes(formato))
+
+    const matchesOrganization =
+      selectedOrganizations.length === 0 ||
+      selectedOrganizations.includes(group.organizacion)
+
+    const matchesCategory =
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(group.categorias)
+
+    const matchesSearch =
+      searchTerm.trim() === '' ||
+      group.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      group.descripcion.toLowerCase().includes(searchTerm.toLowerCase())
+
+    return (
+      matchesFormat && matchesOrganization && matchesCategory && matchesSearch
+    )
+  })
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Buscar Datasets</h1>
-      <Input
-        placeholder="Buscar por palabra clave"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className="mb-6 max-w-md"
-      />
-
-      {loading && <p>Cargando...</p>}
-      {error && <p>Error al cargar datasets</p>}
-
-      <ul className="space-y-4">
-        {datasets.map((ds) => (
-          <li key={ds.id} className="border p-4 rounded shadow bg-white">
-            <h2 className="font-semibold">{ds.title}</h2>
-            <p className="text-sm text-gray-600">{ds.notes}</p>
-          </li>
-        ))}
-      </ul>
+    <div className="flex flex-col p-6 mt-6">
+      <h2 className="text-primary text-2xl font-semibold">
+        Buscador de conjuntos de datos
+      </h2>
+      <p className="mb-4">
+        Utiliza este buscador para localizar fácilmente los conjuntos de datos
+        que necesites.
+      </p>
+      <div className="flex items-start gap-4">
+        <FiltersSidebar
+          appliedFormats={selectedFormats}
+          setAppliedFormats={setSelectedFormats}
+          appliedOrganizations={selectedOrganizations}
+          setAppliedOrganizations={setSelectedOrganizations}
+          appliedCategories={selectedCategories}
+          setAppliedCategories={setSelectedCategories}
+        />
+        <div className="flex flex-col w-full gap-4">
+          <div className="flex items-center">
+            <SearchBox
+              className="mt-8"
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+            <div className="flex md:hidden">
+              <FilterIcon className="rounded-2xl bg-primary text-white hover:bg-primary-hover transition duration-300 ease-in-out">
+                <Link to="/login" className="text-sm font-semibold"></Link>
+              </FilterIcon>
+            </div>
+          </div>
+          <DatasetList mockGroups={filteredGroups} />
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
-export default Datasets;
+export default Datasets
