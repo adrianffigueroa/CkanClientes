@@ -9,6 +9,7 @@ export const mockGroups = [
     formatos: ['PDF', 'CSV'],
     descripcion:
       'Datos sobre reclamos, atención al consumidor y servicios públicos.',
+    grupo: 'ciudadanía',
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const mockGroups = [
     formatos: ['CSV', 'XML'],
     descripcion:
       'Información sobre hospitales públicos, campañas de vacunación y emergencias sanitarias.',
+    grupo: 'salud',
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ export const mockGroups = [
     formatos: ['CSV', 'PDF'],
     descripcion:
       'Bases de datos sobre escuelas, universidades y matrícula educativa.',
+    grupo: 'educación',
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ export const mockGroups = [
     formatos: ['PDF', 'JSON'],
     descripcion:
       'Estadísticas de seguridad pública, delitos y gestión judicial.',
+    grupo: 'seguridad',
   },
   {
     id: 5,
@@ -52,6 +56,7 @@ export const mockGroups = [
     etiquetas: ['impuestos', 'presupuesto', 'gastos públicos'],
     formatos: ['CSV', 'XLSX'],
     descripcion: 'Datos de ingresos fiscales, presupuesto y gastos del Estado.',
+    grupo: 'economía',
   },
   {
     id: 6,
@@ -63,6 +68,7 @@ export const mockGroups = [
     formatos: ['CSV', 'PDF'],
     descripcion:
       'Información sobre redes de transporte público y movilidad urbana.',
+    grupo: 'infraestructura',
   },
   {
     id: 7,
@@ -74,6 +80,7 @@ export const mockGroups = [
     formatos: ['CSV', 'XML'],
     descripcion:
       'Datos de preservación ambiental, calidad del aire y energías renovables.',
+    grupo: 'geografía',
   },
   {
     id: 8,
@@ -85,6 +92,7 @@ export const mockGroups = [
     formatos: ['PDF', 'HTML'],
     descripcion:
       'Información de actividades culturales, turismo local y patrimonio histórico.',
+    grupo: 'cultura',
   },
   {
     id: 9,
@@ -96,5 +104,41 @@ export const mockGroups = [
     formatos: ['CSV', 'PDF'],
     descripcion:
       'Datos sobre clubes deportivos, eventos y actividades recreativas.',
+    grupo: 'deporte',
+  },
+  {
+    id: 10,
+    title: 'Datos demográficos y sociales',
+    datasets: 2,
+    organizacion: 'Instituto Nacional de Estadística y Censos (INDEC)',
+    categorias: ['Demografía'],
+    etiquetas: ['población', 'censos', 'estadísticas'],
+    formatos: ['CSV', 'XLSX'],
+    descripcion:
+      'Estadísticas demográficas, censos y datos sociales de la población.',
+    grupo: 'demografía',
+  },
+  {
+    id: 11,
+    title: 'Datos de infraestructura y obras públicas',
+    datasets: 2,
+    organizacion: 'Ministerio de Obras Públicas',
+    categorias: ['Infraestructura'],
+    etiquetas: ['obras', 'infraestructura', 'construcción'],
+    formatos: ['CSV', 'PDF'],
+    descripcion:
+      'Información sobre proyectos de infraestructura y obras públicas.',
+    grupo: 'infraestructura',
+  },
+  {
+    id: 12,
+    title: 'Datos de vivienda y urbanismo',
+    datasets: 2,
+    organizacion: 'Ministerio de Desarrollo Urbano y Vivienda',
+    categorias: ['Urbanismo'],
+    etiquetas: ['vivienda', 'urbanismo', 'planeamiento'],
+    formatos: ['CSV', 'XLSX'],
+    descripcion: 'Datos sobre vivienda, urbanismo y desarrollo territorial.',
+    grupo: 'geografía',
   },
 ]

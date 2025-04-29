@@ -4,62 +4,27 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { mockGroups } from '@/data/mockGroups'
-import { useState } from 'react'
-import { Button } from '../ui/button'
-const FiltersSidebar = ({
-  appliedFormats,
-  setAppliedFormats,
-  appliedOrganizations,
-  setAppliedOrganizations,
-  appliedCategories,
-  setAppliedCategories,
-  searchTerm,
-  setSearchTerm,
-}) => {
-  // Simulación del mockGroups. En tu proyecto real, esto ya lo vas a tener importado o pasado como prop.
+import { Button } from '@/components/ui/button'
 
-  // Sacar listas únicas de formatos, organizaciones y categorías
-  const uniqueFormats = Array.from(
-    new Set(mockGroups.flatMap((group) => group.formatos))
-  )
-  const uniqueOrganizations = Array.from(
-    new Set(mockGroups.map((group) => group.organizacion))
-  )
-  const uniqueCategories = Array.from(
-    new Set(mockGroups.map((group) => group.categorias))
-  )
-  const [tempFormats, setTempFormats] = useState(appliedFormats)
-  const [tempOrganizations, setTempOrganizations] =
-    useState(appliedOrganizations)
-  const [tempCategories, setTempCategories] = useState(appliedCategories)
-
-  const handleCheckboxChange = (value, tempSelected, setTempSelected) => {
-    setTempSelected((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
-    )
-  }
-
-  const handleApplyFilters = () => {
-    setAppliedFormats(tempFormats)
-    setAppliedOrganizations(tempOrganizations)
-    setAppliedCategories(tempCategories)
-  }
-
-  const handleCleanFilters = () => {
-    setTempFormats([])
-    setTempOrganizations([])
-    setTempCategories([])
-    setAppliedFormats([])
-    setAppliedOrganizations([])
-    setAppliedCategories([])
-  }
-
+function FiltersContent({
+  uniqueOrganizations,
+  uniqueCategories,
+  uniqueFormats,
+  tempOrganizations,
+  tempCategories,
+  tempFormats,
+  handleCheckboxChange,
+  handleApplyFilters,
+  handleCleanFilters,
+}) {
   return (
-    <aside className="max-w-[300px] w-full hidden md:block ">
+    <div className="max-w-[280px] w-full">
       <Accordion type="multiple" collapsible className="w-full">
         {/* 🔵 Organización */}
-        <AccordionItem value="organizaciones" className="mb-4 shadow bg-white">
+        <AccordionItem
+          value="organizaciones"
+          className="mb-4 shadow-[0_20px_80px_rgba(74,58,255,0.15)] bg-white"
+        >
           <AccordionTrigger>Organizaciones</AccordionTrigger>
           <AccordionContent className="mt-2">
             {uniqueOrganizations.map((org) => (
@@ -67,12 +32,12 @@ const FiltersSidebar = ({
                 <input
                   type="checkbox"
                   id={`org-${org}`}
-                  checked={tempOrganizations?.includes(org)}
+                  checked={tempOrganizations.includes(org)}
                   onChange={() =>
                     handleCheckboxChange(
                       org,
                       tempOrganizations,
-                      setTempOrganizations
+                      (temp) => (tempOrganizations = temp)
                     )
                   }
                   className="mr-2"
@@ -86,7 +51,10 @@ const FiltersSidebar = ({
         </AccordionItem>
 
         {/* 🟣 Categorías */}
-        <AccordionItem value="categorias" className="mb-4 shadow bg-white">
+        <AccordionItem
+          value="categorias"
+          className="mb-4 shadow-[0_20px_80px_rgba(74,58,255,0.15)] bg-white"
+        >
           <AccordionTrigger>Categorías</AccordionTrigger>
           <AccordionContent className="mt-2">
             {uniqueCategories.map((cat) => (
@@ -94,9 +62,13 @@ const FiltersSidebar = ({
                 <input
                   type="checkbox"
                   id={`cat-${cat}`}
-                  checked={tempCategories?.includes(cat)}
+                  checked={tempCategories.includes(cat)}
                   onChange={() =>
-                    handleCheckboxChange(cat, tempCategories, setTempCategories)
+                    handleCheckboxChange(
+                      cat,
+                      tempCategories,
+                      (temp) => (tempCategories = temp)
+                    )
                   }
                   className="mr-2"
                 />
@@ -109,7 +81,10 @@ const FiltersSidebar = ({
         </AccordionItem>
 
         {/* 🟡 Formatos */}
-        <AccordionItem value="formatos" className="mb-4 shadow bg-white">
+        <AccordionItem
+          value="formatos"
+          className="mb-4 shadow-[0_20px_80px_rgba(74,58,255,0.15)] bg-white"
+        >
           <AccordionTrigger>Formatos</AccordionTrigger>
           <AccordionContent className="mt-2">
             {uniqueFormats.map((format) => (
@@ -117,9 +92,13 @@ const FiltersSidebar = ({
                 <input
                   type="checkbox"
                   id={`format-${format}`}
-                  checked={tempFormats?.includes(format)}
+                  checked={tempFormats.includes(format)}
                   onChange={() =>
-                    handleCheckboxChange(format, tempFormats, setTempFormats)
+                    handleCheckboxChange(
+                      format,
+                      tempFormats,
+                      (temp) => (tempFormats = temp)
+                    )
                   }
                   className="mr-2"
                 />
@@ -134,22 +113,25 @@ const FiltersSidebar = ({
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <div className="flex items-start justify-between">
+
+      {/* Botones */}
+      <div className="flex items-center justify-between mt-4">
         <Button
           onClick={handleApplyFilters}
-          className="hover:cursor-pointer hover:bg-primary-hover"
+          className="px-1 hover:cursor-pointer hover:bg-primary-hover"
         >
           Aplicar Filtros
         </Button>
         <Button
           onClick={handleCleanFilters}
-          className=" bg-destructive hover:cursor-pointer hover:bg-red-700"
+          variant="destructive"
+          className="px-1 hover:cursor-pointer hover:bg-red-700"
         >
           Limpiar Filtros
         </Button>
       </div>
-    </aside>
+    </div>
   )
 }
 
-export default FiltersSidebar
+export default FiltersContent

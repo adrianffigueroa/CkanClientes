@@ -2,9 +2,10 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
+  const location = useLocation()
   return (
     <header className="bg-white px-4 py-3">
       <div className="container mx-auto flex items-center justify-between">
@@ -17,14 +18,32 @@ const Navbar = () => {
         <div className="hidden md:flex flex-1 justify-center gap-12">
           <Link
             to="/datasets"
-            className="text-sm font-semibold hover:text-primary"
+            className={`text-sm  hover:text-primary ${
+              location.pathname.startsWith('/datasets')
+                ? 'text-primary font-bold'
+                : 'font-semibold'
+            }`}
           >
             Datasets
           </Link>
-          <Link to="/" className="text-sm font-semibold hover:text-primary">
+          <Link
+            to="/organizaciones"
+            className={`text-sm hover:text-primary ${
+              location.pathname.startsWith('/organizaciones')
+                ? 'text-primary font-bold'
+                : 'font-semibold'
+            }`}
+          >
             Organizaciones
           </Link>
-          <Link to="/" className="text-sm font-semibold hover:text-primary">
+          <Link
+            to="/grupos"
+            className={`text-sm  hover:text-primary ${
+              location.pathname.startsWith('/grupos')
+                ? 'text-primary font-bold'
+                : 'font-semibold'
+            }`}
+          >
             Grupos
           </Link>
           <Link to="/" className="text-sm font-semibold hover:text-primary">
@@ -59,14 +78,14 @@ const Navbar = () => {
                 </Link>
                 <Separator />
                 <Link
-                  to="/"
+                  to="/organizaciones"
                   className="text-sm font-semibold hover:text-primary"
                 >
                   Organizaciones
                 </Link>
                 <Separator />
                 <Link
-                  to="/"
+                  to="/grupos"
                   className="text-sm font-semibold hover:text-primary"
                 >
                   Grupos

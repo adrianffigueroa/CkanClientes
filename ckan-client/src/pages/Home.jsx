@@ -36,7 +36,7 @@ const Home = () => {
       <section className="flex justify-center mt-10 w-full overflow-hidden relative">
         {/* Fondo expandido */}
         <div className="absolute inset-0">
-          <div className="w-[115%] translate-x-[7.5%] bg-[#4A3AFF08] rounded-3xl min-h-full"></div>
+          <div className="w-[115%] translate-x-[7.5%] bg-[rgba(74,58,255,0.03)] rounded-3xl min-h-full"></div>
         </div>
 
         {/* Contenido visible */}

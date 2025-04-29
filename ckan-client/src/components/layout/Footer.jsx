@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="mt-4 z-100">
       <Separator />
-      <div className="flex justify-between items-start text-gray-500 py-4 mx-8">
+      <div className="flex justify-between items-start text-gray-500 py-4 mx-8 z-100">
         <div className="flex flex-col">
           <p className="text-primary mb-2 text-lg">Powered by</p>
           <img src={logoCkan} alt="Logo" className="h-8 w-22 mb-2" />
