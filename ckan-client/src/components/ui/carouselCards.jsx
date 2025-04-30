@@ -2,8 +2,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel'
 import GroupCard from './groupCard'
 const CarouselCards = ({ mockGroups }) => {
@@ -14,7 +12,7 @@ const CarouselCards = ({ mockGroups }) => {
       }}
       className="w-full"
     >
-      <CarouselContent className="-ml-1 px-2">
+      <CarouselContent className="-ml-1  ">
         {mockGroups.map((mockGroups) => (
           <CarouselItem
             key={mockGroups.id}
@@ -30,8 +28,6 @@ const CarouselCards = ({ mockGroups }) => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   )
 }

@@ -24,7 +24,7 @@ const DatasetCard = ({ group }) => {
           {group.formatos.map((formato) => (
             <Badge
               key={formato}
-              className={`${formato === 'CSV' ? 'bg-primary' : formato === 'PDF' ? 'bg-red-600' : formato === 'XML' ? 'bg-green-600' : 'bg-gray-200'} text-white text-xs rounded-md px-2 py-1 mr-2`}
+              className={`${formato === 'CSV' || formato === 'XLSX' ? 'bg-green-600' : formato === 'PDF' ? 'bg-red-600' : 'bg-gray-600'} text-white text-xs rounded-md px-2 py-1 mr-2`}
             >
               {formato}
             </Badge>

@@ -7,8 +7,8 @@ import { Link, useLocation } from 'react-router-dom'
 const Navbar = () => {
   const location = useLocation()
   return (
-    <header className="bg-white px-4 py-3">
-      <div className="container mx-auto flex items-center justify-between">
+    <header className=" px-4 my-4 bg-white h-full">
+      <div className="bg-white h-10 container mx-auto flex items-center justify-between position: fixed z-100">
         {/* Logo */}
         <Link to="/" className="text-xl font-bold text-blue-600">
           CKAN Cliente
@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="hidden md:flex flex-1 justify-center gap-12">
           <Link
             to="/datasets"
-            className={`text-sm  hover:text-primary ${
+            className={`text-base  hover:text-primary ${
               location.pathname.startsWith('/datasets')
                 ? 'text-primary font-bold'
                 : 'font-semibold'
@@ -28,7 +28,7 @@ const Navbar = () => {
           </Link>
           <Link
             to="/organizaciones"
-            className={`text-sm hover:text-primary ${
+            className={`text-base hover:text-primary ${
               location.pathname.startsWith('/organizaciones')
                 ? 'text-primary font-bold'
                 : 'font-semibold'
@@ -38,7 +38,7 @@ const Navbar = () => {
           </Link>
           <Link
             to="/grupos"
-            className={`text-sm  hover:text-primary ${
+            className={`text-base hover:text-primary ${
               location.pathname.startsWith('/grupos')
                 ? 'text-primary font-bold'
                 : 'font-semibold'
@@ -46,7 +46,7 @@ const Navbar = () => {
           >
             Grupos
           </Link>
-          <Link to="/" className="text-sm font-semibold hover:text-primary">
+          <Link to="/" className="text-base font-semibold hover:text-primary">
             Acerca de
           </Link>
         </div>

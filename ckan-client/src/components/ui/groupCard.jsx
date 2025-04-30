@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card'
 
 const GroupCard = ({ title, datasets }) => {
   return (
-    <Card className="w-60 h-64 mx-auto flex flex-col items-start justify-start rounded-4xl shadow-[0_20px_80px_rgba(74,58,255,0.08)] bg-white">
+    <Card className="w-60 h-64 mx-auto flex flex-col items-start justify-start rounded-4xl shadow-[0_20px_60px_rgba(57,42,230,0.15)] bg-white">
       <CardContent className="flex flex-col justify-between items-start w-full h-full px-4 py-2">
         {/* Icono */}
         <div className="mb-0">
