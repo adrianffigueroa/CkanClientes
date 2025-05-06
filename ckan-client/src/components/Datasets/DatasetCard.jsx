@@ -10,7 +10,7 @@ import {
 
 const DatasetCard = ({ group }) => {
   return (
-    <Card className="py-2 px-2 rounded-md shadow-[0_20px_80px_rgba(74,58,255,0.15)] bg-white">
+    <Card className="p-2 rounded-md shadow-[0_20px_80px_rgba(74,58,255,0.15)] bg-white">
       <CardHeader>
         <CardTitle className="text-lg font-semibold">
           {group.title} {/* Displaying the name of the dataset */}

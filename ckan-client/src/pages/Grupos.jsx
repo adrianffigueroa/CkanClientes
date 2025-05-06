@@ -26,7 +26,7 @@ const Grupos = () => {
   })
 
   return (
-    <div className="mt-4 mx-8 flex flex-col">
+    <div className="mt-40 mx-20 flex flex-col">
       <div className="flex flex-col max-w-screen-xl gap-1">
         <h2 className="text-3xl font-semibold text-primary">
           Buscador de Grupos
@@ -44,10 +44,10 @@ const Grupos = () => {
           <SearchBox
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
-            className="w-full"
+            wrapperClassName="w-full"
           />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {uniqueGroups.length === 0 && (
             <p className="text-gray-600 mb-4 md:col-span-4">
               No se encontraron grupos para la búsqueda "{searchTerm}"

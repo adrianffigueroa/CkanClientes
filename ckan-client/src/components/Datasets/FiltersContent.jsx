@@ -16,6 +16,9 @@ function FiltersContent({
   handleCheckboxChange,
   handleApplyFilters,
   handleCleanFilters,
+  setTempFormats,
+  setTempOrganizations,
+  setTempCategories,
 }) {
   return (
     <div className="max-w-[280px] w-full">
@@ -37,7 +40,7 @@ function FiltersContent({
                     handleCheckboxChange(
                       org,
                       tempOrganizations,
-                      (temp) => (tempOrganizations = temp)
+                      setTempOrganizations
                     )
                   }
                   className="mr-2"
@@ -64,11 +67,7 @@ function FiltersContent({
                   id={`cat-${cat}`}
                   checked={tempCategories.includes(cat)}
                   onChange={() =>
-                    handleCheckboxChange(
-                      cat,
-                      tempCategories,
-                      (temp) => (tempCategories = temp)
-                    )
+                    handleCheckboxChange(cat, tempCategories, setTempCategories)
                   }
                   className="mr-2"
                 />
@@ -94,11 +93,7 @@ function FiltersContent({
                   id={`format-${format}`}
                   checked={tempFormats.includes(format)}
                   onChange={() =>
-                    handleCheckboxChange(
-                      format,
-                      tempFormats,
-                      (temp) => (tempFormats = temp)
-                    )
+                    handleCheckboxChange(format, tempFormats, setTempFormats)
                   }
                   className="mr-2"
                 />

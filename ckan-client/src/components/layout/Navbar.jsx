@@ -7,46 +7,49 @@ import { Link, useLocation } from 'react-router-dom'
 const Navbar = () => {
   const location = useLocation()
   return (
-    <header className=" px-4 my-4 bg-white h-full">
-      <div className="bg-white h-10 container mx-auto flex items-center justify-between position: fixed z-100">
+    <header className="px-10 md:px-30 pt-2 bg-white fixed w-full top-0 z-50">
+      <div className="bg-white my-4 container mx-auto flex items-center justify-between mb-8">
         {/* Logo */}
         <Link to="/" className="text-xl font-bold text-blue-600">
           CKAN Cliente
         </Link>
 
         {/* Links centrados */}
-        <div className="hidden md:flex flex-1 justify-center gap-12">
+        <div className="hidden md:flex flex-1 justify-center">
           <Link
             to="/datasets"
-            className={`text-base  hover:text-primary ${
+            className={`text-base mx-6 hover:text-primary ${
               location.pathname.startsWith('/datasets')
                 ? 'text-primary font-bold'
-                : 'font-semibold'
+                : 'font-normal'
             }`}
           >
             Datasets
           </Link>
           <Link
             to="/organizaciones"
-            className={`text-base hover:text-primary ${
+            className={`text-base mx-6 hover:text-primary ${
               location.pathname.startsWith('/organizaciones')
                 ? 'text-primary font-bold'
-                : 'font-semibold'
+                : 'font-normal'
             }`}
           >
             Organizaciones
           </Link>
           <Link
             to="/grupos"
-            className={`text-base hover:text-primary ${
+            className={`text-base mx-6 hover:text-primary ${
               location.pathname.startsWith('/grupos')
                 ? 'text-primary font-bold'
-                : 'font-semibold'
+                : 'font-normal'
             }`}
           >
             Grupos
           </Link>
-          <Link to="/" className="text-base font-semibold hover:text-primary">
+          <Link
+            to="/"
+            className="text-center text-base mx-6 font-normal hover:text-primary"
+          >
             Acerca de
           </Link>
         </div>
@@ -54,7 +57,7 @@ const Navbar = () => {
         {/* Botón derecho */}
         <div className="hidden md:flex">
           <Button className="rounded-3xl bg-primary text-white hover:bg-primary-hover transition duration-300 ease-in-out">
-            <Link to="/login" className="text-sm font-semibold">
+            <Link to="/login" className="text-sm font-medium">
               Iniciar Sesión
             </Link>
           </Button>
