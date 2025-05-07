@@ -1,4 +1,4 @@
-import SmallCards from '@/components/Home/smallCards'
+import SmallCards from '@/components/Home/SmallCards'
 import CarouselCards from '@/components/ui/carouselCards'
 import SearchBox from '@/components/ui/searchbox'
 import { mockGroups } from '@/data/mockGroups'
