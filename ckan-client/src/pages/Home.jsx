@@ -1,6 +1,8 @@
+import SmallCards from '@/components/Home/smallCards'
 import CarouselCards from '@/components/ui/carouselCards'
 import SearchBox from '@/components/ui/searchbox'
 import { mockGroups } from '@/data/mockGroups'
+import { ClipboardList, Layers, Users } from 'lucide-react'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -9,40 +11,68 @@ const Home = () => {
   const location = useLocation()
   const isHomePage = location.pathname === '/'
   return (
-    <div className="flex flex-col items-center mt-40">
-      <section className="flex flex-col items-center w-1/2">
+    <div className="flex flex-col items-center pt-16">
+      <section className="flex flex-col items-center w-full bg-secondary py-14">
         <h3 className="flex flex-col text-base items-center text-primary tracking-widest">
           PROVINCIA DE BUENOS AIRES
         </h3>
-        <h1 className="flex flex-col items-center text-4xl font-semibold text-center mt-4 mb-12 tracking-wide">
+        <h1 className="flex flex-col items-center text-4xl font-semibold text-center mt-4 mb-2 tracking-wide">
           <span>Portal de datos abiertos</span>
-          <span>Municipio de Quilmes</span>
+          <span className="text-primary">Municipio de Quilmes</span>
         </h1>
+        <span className="text-sm text-center text-gray-600 font-normal my-4 w-3/4">
+          Diseñado para acceder, descargar y reutilizar información del sector
+          <br />
+          público para tus desarrollos e investigaciones.
+        </span>
         <SearchBox
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           isHomePage={isHomePage}
           placeholder={searchTerm ? searchTerm : 'Buscar...'}
+          wrapperClassName="w-1/2"
         />
+      </section>
+
+      <section className="mt-16 flex flex-col items-center">
+        <h2 className="text-3xl font-semibold text-center">
+          Nuestros datos en <span className="text-primary">cifras</span>
+        </h2>
+        <span className="text-sm text-center text-gray-600 font-normal my-4 w-3/4">
+          Cumpliendo con estándares internacionales, ofrecemos información útil
+          para organizaciones, ciudadanía y la comunidad investigadora.
+        </span>
         <div className="flex items-start justify-center mt-8">
-          <div className="flex flex-col items-center mr-8">
-            <p className="text-4xl text-primary font-semibold">
-              {mockGroups
-                .map((group) => group.datasets)
-                .reduce((a, b) => a + b, 0)}
-            </p>
-            <p>Conjunto</p>
-            <p>de Datos</p>
+          <div className="flex mb-8 md:flex-row flex-col items-center gap-8 md:gap-14">
+            <SmallCards
+              icon={Layers}
+              value={
+                [...new Set(mockGroups.map((group) => group.grupo))].length
+              }
+              label={'Grupos'}
+            />
+            <SmallCards
+              icon={Users}
+              value={
+                [...new Set(mockGroups.map((group) => group.organizacion))]
+                  .length
+              }
+              label={'Organizaciones'}
+            />
+            <SmallCards
+              icon={ClipboardList}
+              value={mockGroups.reduce((acc, group) => acc + group.datasets, 0)}
+              label={'Datasets'}
+            />
           </div>
-          <div className="flex flex-col items-center">
+          {/* <div className="flex flex-col items-center">
             <p className="text-4xl text-primary font-semibold">
               {mockGroups.length}
             </p>
             <p>Grupos</p>
-          </div>
+          </div> */}
         </div>
       </section>
-
       <section className="mb-22 flex text-center items-center justify-center mt-16 w-full relative overflow-visible">
         <div className="absolute inset-0">
           <div className="w-[135%] lg:translate-x-[8%] bg-[rgba(240,240,255,0.8)] rounded-t-[150px] min-h-full"></div>

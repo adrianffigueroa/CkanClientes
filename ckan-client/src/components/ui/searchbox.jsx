@@ -34,7 +34,7 @@ export default function SearchBox({
     <div
       className={`${wrapperClassName} p-[2px] rounded-xl shadow-[0_20px_80px_rgba(74,58,255,0.15)] bg-white`}
     >
-      <div className="flex items-center rounded-2xl px-4 py-2 bg-white">
+      <div className="flex items-center rounded-lg px-4 py-2 bg-white">
         <Input
           type="text"
           placeholder={'Buscar...'}

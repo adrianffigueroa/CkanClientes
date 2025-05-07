@@ -4,8 +4,8 @@ import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen overflow-x-hidden">
-      <Navbar className="fixed top-0 left-0 right-0" />
+    <div className="flex flex-col min-h-screen overflow-x-hidden bg-body">
+      <Navbar className="top-0 left-0 right-0" />
       <main className="flex-grow">
         <Outlet />
       </main>

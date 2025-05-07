@@ -7,13 +7,14 @@ import { Link, useLocation } from 'react-router-dom'
 const Navbar = () => {
   const location = useLocation()
   return (
-    <header className="px-10 md:px-30 pt-2 bg-white fixed w-full top-0 z-50">
-      <div className="bg-white my-4 container mx-auto flex items-center justify-between mb-8">
+    <div className="bg-secondary fixed top-0 left-0 z-100 w-full flex py-4">
+      <div className="flex items-center w-full px-20 justify-between">
         {/* Logo */}
-        <Link to="/" className="text-xl font-bold text-blue-600">
-          CKAN Cliente
-        </Link>
-
+        <div className="hidden md:flex">
+          <Link to="/" className="text-xl font-bold text-blue-600">
+            CKAN Cliente
+          </Link>
+        </div>
         {/* Links centrados */}
         <div className="hidden md:flex flex-1 justify-center">
           <Link
@@ -62,50 +63,46 @@ const Navbar = () => {
             </Link>
           </Button>
         </div>
-
-        {/* Menú mobile con Sheet */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-primary">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="p-6">
-              <nav className="flex flex-col gap-8">
-                <Link
-                  to="/datasets"
-                  className="mt-12 text-sm font-semibold hover:text-primary"
-                >
-                  Datasets
-                </Link>
-                <Separator />
-                <Link
-                  to="/organizaciones"
-                  className="text-sm font-semibold hover:text-primary"
-                >
-                  Organizaciones
-                </Link>
-                <Separator />
-                <Link
-                  to="/grupos"
-                  className="text-sm font-semibold hover:text-primary"
-                >
-                  Grupos
-                </Link>
-                <Separator />
-                <Link
-                  to="/"
-                  className="text-sm font-semibold hover:text-primary"
-                >
-                  Acerca de
-                </Link>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
       </div>
-    </header>
+      {/* Menú mobile con Sheet */}
+      <div className="md:hidden">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="text-primary">
+              <Menu className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="p-6">
+            <nav className="flex flex-col gap-8">
+              <Link
+                to="/datasets"
+                className="mt-12 text-sm font-semibold hover:text-primary"
+              >
+                Datasets
+              </Link>
+              <Separator />
+              <Link
+                to="/organizaciones"
+                className="text-sm font-semibold hover:text-primary"
+              >
+                Organizaciones
+              </Link>
+              <Separator />
+              <Link
+                to="/grupos"
+                className="text-sm font-semibold hover:text-primary"
+              >
+                Grupos
+              </Link>
+              <Separator />
+              <Link to="/" className="text-sm font-semibold hover:text-primary">
+                Acerca de
+              </Link>
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </div>
   )
 }
 
