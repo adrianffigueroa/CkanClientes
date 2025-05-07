@@ -21,7 +21,7 @@ const Navbar = () => {
             to="/datasets"
             className={`text-base mx-6 hover:text-primary ${
               location.pathname.startsWith('/datasets')
-                ? 'text-primary font-bold'
+                ? 'text-primary font-bold text-shadow-md'
                 : 'font-normal'
             }`}
           >
@@ -31,7 +31,7 @@ const Navbar = () => {
             to="/organizaciones"
             className={`text-base mx-6 hover:text-primary ${
               location.pathname.startsWith('/organizaciones')
-                ? 'text-primary font-bold'
+                ? 'text-primary font-bold text-shadow-md'
                 : 'font-normal'
             }`}
           >
@@ -41,15 +41,19 @@ const Navbar = () => {
             to="/grupos"
             className={`text-base mx-6 hover:text-primary ${
               location.pathname.startsWith('/grupos')
-                ? 'text-primary font-bold'
+                ? 'text-primary font-bold text-shadow-md'
                 : 'font-normal'
             }`}
           >
             Grupos
           </Link>
           <Link
-            to="/"
-            className="text-center text-base mx-6 font-normal hover:text-primary"
+            to="/about"
+            className={`text-base mx-6 hover:text-primary ${
+              location.pathname.startsWith('/about')
+                ? 'text-primary font-bold text-shadow-md'
+                : 'font-normal'
+            }`}
           >
             Acerca de
           </Link>

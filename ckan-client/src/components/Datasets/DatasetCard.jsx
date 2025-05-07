@@ -1,4 +1,5 @@
 import { Badge } from '@/components/ui/badge'
+import { Link } from 'react-router-dom'
 import { Button } from '../ui/button'
 import {
   Card,
@@ -32,7 +33,7 @@ const DatasetCard = ({ group }) => {
         </div>
         <div className="flex ms-auto">
           <Button className="bg-primary text-white text-xs rounded-2xl w-12 h-6 hover:cursor-pointer hover:bg-primary-hover">
-            Ver
+            <Link to={`/datasetsDetails/${group.id}`}>Ver</Link>
           </Button>
         </div>
       </CardFooter>

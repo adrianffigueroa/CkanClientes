@@ -65,12 +65,6 @@ const Home = () => {
               label={'Datasets'}
             />
           </div>
-          {/* <div className="flex flex-col items-center">
-            <p className="text-4xl text-primary font-semibold">
-              {mockGroups.length}
-            </p>
-            <p>Grupos</p>
-          </div> */}
         </div>
       </section>
       <section className="mb-22 flex text-center items-center justify-center mt-16 w-full relative overflow-visible">

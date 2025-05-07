@@ -24,6 +24,7 @@
   --color-secondary: var(--secondary);
   --color-body: var(--body);
   --color-third: var(--third);
+  --color-bgIcon: var(--bgIcon);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
@@ -63,6 +64,8 @@
   /* --secondary: oklch(0.968 0.007 247.896); */
   --body: oklch(0.98 0.0053 286.3);
   --third: rgba(164, 156, 255, 1);
+  --bgIcon: rgba(57, 42, 230, 0.15);
+
   --secondary: rgba(240, 240, 255, 1);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
@@ -120,6 +123,10 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+.clip-triangle {
+  clip-path: polygon(100% 0%, 100% 100%, 0% 0%);
 }
 
 @layer base {
